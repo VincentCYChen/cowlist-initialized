@@ -4,10 +4,10 @@ function Form() {
   return (
     <div>
       <form>
-        <h3>Add new cow</h3>
-        <label for="name">Name</label>
+        <p>Add new cow:</p>
+        <label htmlFor="name">Name</label>
         <input type="text" id="name" name="name" />
-        <label for="description">Description</label>
+        <label htmlFor="description">Description</label>
         <input type="text" id="description" name="description" />
         <input type="submit" value="Submit" />
       </form>

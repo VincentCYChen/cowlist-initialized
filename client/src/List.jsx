@@ -1,10 +1,10 @@
 import React from 'react';
 
-function List({ cows }) {
+function List({ cows, showDetail }) {
   return (
     <div>
       {cows.map(cow => {
-        return <div>{cow.name}</div>;
+        return <div onClick={() => showDetail(cow)}>{cow.name}</div>;
       })}
     </div>
   );

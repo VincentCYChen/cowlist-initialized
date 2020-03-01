@@ -10,15 +10,23 @@ class App extends React.Component {
       cows: [
         { name: 'Jon', description: 'handsome' },
         { name: 'Vin', description: 'sexy' }
-      ]
+      ],
+      cow: null
     };
+
+    this.showDetail = this.showDetail.bind(this);
+  }
+
+  showDetail(cowObj) {
+    this.setState({ cow: cowObj });
   }
 
   render() {
     return (
       <div>
+        <Detail cow={this.state.cow} showDetail={this.showDetail} />
         <Form />
-        <List cows={this.state.cows} />
+        <List cows={this.state.cows} showDetail={this.showDetail} />
       </div>
     );
   }
