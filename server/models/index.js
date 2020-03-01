@@ -5,7 +5,7 @@ module.exports = {
     db.query(
       `INSERT INTO cow (name, description)
               VALUES ("${cowObj.name}", "${cowObj.description}")`,
-      (err, results) => {
+      err => {
         if (err) {
           callback(err);
         } else {
@@ -13,5 +13,15 @@ module.exports = {
         }
       }
     );
+  },
+
+  readAll: function(callback) {
+    db.query(`SELECT name, description FROM cow`, (err, results) => {
+      if (err) {
+        callback(err);
+      } else {
+        callback(null, results);
+      }
+    });
   }
 };
