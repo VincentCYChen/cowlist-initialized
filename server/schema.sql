@@ -1,0 +1,14 @@
+DROP DATABASE IF EXISTS cowstuff;
+CREATE DATABASE cowstuff;
+USE cowstuff;
+
+CREATE TABLE cow
+(
+  id INT NOT NULL
+  AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR
+  (50) NOT NULL,
+  description VARCHAR
+  (250) NOT NULL
+);
+
