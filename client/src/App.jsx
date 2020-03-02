@@ -2,15 +2,13 @@ import React from 'react';
 import Detail from './Detail.jsx';
 import Form from './Form.jsx';
 import List from './List';
+import api from './models/index.js';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cows: [
-        { name: 'Jon', description: 'handsome' },
-        { name: 'Vin', description: 'sexy' }
-      ],
+      cows: [],
       cow: null
     };
 
@@ -19,6 +17,12 @@ class App extends React.Component {
 
   showDetail(cowObj) {
     this.setState({ cow: cowObj });
+  }
+
+  componentDidMount() {
+    api.readAll(data => {
+      this.setState({ cows: data });
+    });
   }
 
   render() {

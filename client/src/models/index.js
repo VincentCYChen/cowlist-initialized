@@ -1,6 +1,6 @@
 const $ = require('jquery');
 
-module.exports = {
+const api = {
   readAll: callback => {
     $.ajax({
       type: 'GET',
@@ -21,3 +21,5 @@ module.exports = {
     });
   }
 };
+
+export default api;
