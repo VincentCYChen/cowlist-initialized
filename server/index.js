@@ -1,9 +1,11 @@
 const express = require('express');
 const app = express();
 const port = 3000;
-let models = require('./models');
+const models = require('./models');
+const parser = require('body-parser');
 
-app.use(express.json());
+app.use(parser.json());
+app.use(parser.urlencoded({ extended: true }));
 app.use(express.static('./client/dist'));
 
 app.get('/', (req, res) => res.send('Hello World!'));
@@ -19,6 +21,7 @@ app.get('/api/cows', (req, res) =>
 );
 
 app.post('/api/cows', (req, res) => {
+  console.log('app.post', req.body);
   models.create(req.body, (err, data) => {
     if (err) {
       res.status(500).send(err);

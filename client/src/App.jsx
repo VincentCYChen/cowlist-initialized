@@ -13,10 +13,7 @@ class App extends React.Component {
     };
 
     this.showDetail = this.showDetail.bind(this);
-  }
-
-  showDetail(cowObj) {
-    this.setState({ cow: cowObj });
+    this.createCow = this.createCow.bind(this);
   }
 
   componentDidMount() {
@@ -25,11 +22,23 @@ class App extends React.Component {
     });
   }
 
+  showDetail(cowObj) {
+    this.setState({ cow: cowObj });
+  }
+
+  createCow(cowObj) {
+    api.create(cowObj, data => {
+      console.log('success', data);
+      let result = this.state.cows.concat([data]);
+      this.setState({ cows: result });
+    });
+  }
+
   render() {
     return (
       <div>
         <Detail cow={this.state.cow} showDetail={this.showDetail} />
-        <Form />
+        <Form createCow={this.createCow} />
         <List cows={this.state.cows} showDetail={this.showDetail} />
       </div>
     );
