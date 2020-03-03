@@ -31,4 +31,24 @@ app.post('/api/cows', (req, res) => {
   });
 });
 
+app.put('/api/cows/:id', (req, res) => {
+  models.update(req.body, req.params.id, (err, data) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(201).json(data);
+    }
+  });
+});
+
+app.delete('/api/cows/:id', (req, res) => {
+  models.delete(req.params.id, (err, data) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(200).json(data);
+    }
+  });
+});
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

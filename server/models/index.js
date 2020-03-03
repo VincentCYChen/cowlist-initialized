@@ -23,5 +23,28 @@ module.exports = {
         callback(null, results);
       }
     });
+  },
+
+  update: function(cowObj, id, callback) {
+    db.query(
+      `UPDATE cow SET name = ${cowObj.name} WHERE id = ${id}`,
+      (errm, results) => {
+        if (err) {
+          callback(err);
+        } else {
+          callback(null, results);
+        }
+      }
+    );
+  },
+
+  delete: function(id, callback) {
+    db.query(`DELETE FROM cow WHERE id = ${id}`, (err, results) => {
+      if (err) {
+        callback(err);
+      } else {
+        callback(results);
+      }
+    });
   }
 };
