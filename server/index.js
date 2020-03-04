@@ -12,6 +12,7 @@ app.get('/', (req, res) => res.send('Hello World!'));
 
 app.get('/api/cows', (req, res) =>
   models.readAll((err, data) => {
+    console.log(data);
     if (err) {
       res.status(500).send(err);
     } else {

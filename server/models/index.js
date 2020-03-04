@@ -27,8 +27,8 @@ module.exports = {
 
   update: function(cowObj, id, callback) {
     db.query(
-      `UPDATE cow SET name = ${cowObj.name} WHERE id = ${id}`,
-      (errm, results) => {
+      `UPDATE cow SET name = "${cowObj.name}", description = "${cowObj.description}" WHERE id = ${id}`,
+      (err, results) => {
         if (err) {
           callback(err);
         } else {
