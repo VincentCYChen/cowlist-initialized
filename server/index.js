@@ -8,11 +8,9 @@ app.use(parser.json());
 app.use(parser.urlencoded({ extended: true }));
 app.use(express.static('./client/dist'));
 
-app.get('/', (req, res) => res.send('Hello World!'));
-
 app.get('/api/cows', (req, res) =>
   models.readAll((err, data) => {
-    console.log(data);
+    // console.log(data);
     if (err) {
       res.status(500).send(err);
     } else {
@@ -22,7 +20,7 @@ app.get('/api/cows', (req, res) =>
 );
 
 app.post('/api/cows', (req, res) => {
-  console.log('app.post', req.body);
+  // console.log('app.post', req.body);
   models.create(req.body, (err, data) => {
     if (err) {
       res.status(500).send(err);
@@ -52,4 +50,4 @@ app.delete('/api/cows/:id', (req, res) => {
   });
 });
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(port, () => console.log(`Cow app listening on port ${port}!`));

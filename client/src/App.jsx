@@ -2,6 +2,8 @@ import React from 'react';
 import Detail from './Detail.jsx';
 import Form from './Form.jsx';
 import List from './List';
+import UpdateForm from './UpdateForm.jsx';
+import DeleteForm from './DeleteForm.jsx';
 import api from './models/index.js';
 
 class App extends React.Component {
@@ -28,7 +30,6 @@ class App extends React.Component {
 
   createCow(cowObj) {
     api.create(cowObj, data => {
-      console.log('success', data);
       let result = this.state.cows.concat([data]);
       this.setState({ cows: result });
     });
@@ -40,6 +41,8 @@ class App extends React.Component {
         <Detail cow={this.state.cow} showDetail={this.showDetail} />
         <Form createCow={this.createCow} />
         <List cows={this.state.cows} showDetail={this.showDetail} />
+        <DeleteForm />
+        <UpdateForm />
       </div>
     );
   }

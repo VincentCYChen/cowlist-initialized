@@ -30,7 +30,7 @@ class Form extends React.Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <p>Add new cow:</p>
+          <h3>Add new cow:</h3>
           <label htmlFor="name">Name</label>
           <input
             type="text"

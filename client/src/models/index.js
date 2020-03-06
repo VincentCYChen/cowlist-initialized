@@ -11,7 +11,7 @@ const api = {
     });
   },
   create: (cowObj, callback) => {
-    console.log('create', cowObj);
+    // console.log('create', cowObj);
     $.ajax({
       type: 'POST',
       url: '/api/cows',
